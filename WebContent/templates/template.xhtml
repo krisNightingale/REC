@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="Kris Nightingale" />
+<link rel="icon" href="" />
+
+<title>Главная</title>
+
+<!-- Bootstrap -->
+<h:outputStylesheet library="css" name="bootstrap.min.css"/>
+
+<!-- Custom styles for this template -->
+<h:outputStylesheet library="css" name="dashboard.css" />
+<h:outputStylesheet library="css" name="sticky-footer-navbar.css"/>
+<h:outputStylesheet library="css" name="button_primary.css"/>
+
+</h:head>
+<body>
+
+	<ui:insert name="header">
+		<ui:include src="/templates/header.xhtml"></ui:include>
+	</ui:insert>
+	<ui:insert name="content">
+		<ui:include src="/templates/contents.xhtml"></ui:include>
+	</ui:insert>
+	<ui:insert name="footer">
+		<ui:include src="/templates/footer.xhtml"></ui:include>
+	</ui:insert>
+	
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script
+		src="#{facesContext.externalContext.requestContextPath}/resources/js/bootstrap.min.js"></script>
+</body>
+</html>

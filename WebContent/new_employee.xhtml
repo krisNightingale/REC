@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Menu</title>
+
+	<!-- Bootstrap -->
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+
+	<!-- Custom styles for this template -->
+	<h:outputStylesheet library="css" name="dashboard.css" />
+	<h:outputStylesheet library="css" name="sticky-footer-navbar.css" />
+</h:head>
+<h:body>
+	<ui:composition template="templates/template.xhtml">
+		<ui:define name="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-3 col-md-2 sidebar">
+						<ul class="nav nav-sidebar">
+							<li class="active"><a href="#">Статистика <span
+									class="sr-only">(current)</span></a></li>
+							<li><a href="#">Сегодня</a></li>
+							<li><a href="#">Analytics</a></li>
+							<li><a href="#">Export</a></li>
+						</ul>
+						<ul class="nav nav-sidebar">
+							<li><a href="">Nav item</a></li>
+							<li><a href="">Nav item again</a></li>
+							<li><a href="">One more nav</a></li>
+							<li><a href="">Another nav item</a></li>
+							<li><a href="">More navigation</a></li>
+						</ul>
+						<ul class="nav nav-sidebar">
+							<li><br /></li>
+							<li><br /></li>
+							<li><br /></li>
+							<li><br /></li>
+							<li><br /></li>
+						</ul>
+						<ul class="nav nav-sidebar">
+							<li><br /></li>
+							<li><br /></li>
+							<li><a href="">Выход</a></li>
+						</ul>
+					</div>
+					<div
+						class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+						<h1 class="page-header">Новый сотрудник</h1>
+						<h:form>
+								<h:outputLabel value="Должность: " />
+								<div class="input-group">
+								  <span class="input-group-addon" id="basic-addon1">!</span>
+								  <h:inputText styleClass="form-control" value="#{employee_controller.employee.position}">
+								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
+								  	<f:attribute name="placeholder" value="Должность"/>
+								  </h:inputText>
+								</div>
+								
+								<h:outputLabel value="Имя: " />
+								<div class="input-group">
+								  <span class="input-group-addon" id="basic-addon1">@</span>
+								  <h:inputText styleClass="form-control" value="#{employee_controller.employee.name}">
+								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
+								  	<f:attribute name="placeholder" value="Имя пользователя"/>
+								  </h:inputText>
+								</div>
+								
+								
+								<h:outputLabel value="Логин: " />
+								<div class="input-group">
+								  <span class="input-group-addon" id="basic-addon1">#</span>
+								  <h:inputText styleClass="form-control" value="#{employee_controller.employee.login}">
+								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
+								  	<f:attribute name="placeholder" value="Логин"/>
+								  </h:inputText>
+								</div>
+								
+								<h:outputLabel value="Пароль: " />
+								<div class="input-group">
+								  <span class="input-group-addon" id="basic-addon1">*</span>
+								  <h:inputSecret styleClass="form-control" value="#{employee_controller.employee.password}">
+								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
+								  	<f:attribute name="placeholder" value="password"/>
+								  </h:inputSecret>
+								</div>
+								<br/>
+							<h:commandButton styleClass="btn btn-primary" value="Добавить нового сотрудника"
+								action="#{employee_controller.addNewEmployee}" />
+						</h:form>
+
+					</div>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

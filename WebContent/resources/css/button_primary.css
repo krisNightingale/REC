@@ -1,0 +1,23 @@
+/*----My changes----*/
+
+.btn-primary:hover, .btn-primary:active, .btn-primary:target, .btn-primary.focus, .btn-primary:focus  {
+    color: #555;
+    background-color: rgb(190, 222, 200);
+    border-color: rgb(190, 222, 200);
+}
+.btn-primary {
+    color: #7c8480;
+    background-color: rgb(206, 232, 216);
+    border-color: rgb(206, 232, 216);
+}
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover {
+    color: #555;
+    background-color: rgb(190, 222, 200);
+    border-color: rgb(190, 222, 200);
+}
+.form-control:focus {
+    border-color: rgb(190, 222, 200);
+}
+.form-signin .form-signin-heading, .form-signin .checkbox {
+    color: #7c8480;
+}
