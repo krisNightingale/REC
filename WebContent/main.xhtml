@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:body>
+		<ui:composition template="templates/template.xhtml">
+		<ui:define name="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-3 col-md-2 sidebar">
+						<ul class="nav nav-sidebar">
+							<li class="active"><a href="#">Статистика <span
+									class="sr-only">(current)</span></a></li>
+							<li><a href="#">Сегодня</a></li>
+							<li><a href="#">Analytics</a></li>
+							<li><a href="#">Export</a></li>
+						</ul>
+						<ul class="nav nav-sidebar">
+							<li><a href="">Nav item</a></li>
+							<li><a href="">Nav item again</a></li>
+							<li><a href="">One more nav</a></li>
+							<li><a href="">Another nav item</a></li>
+							<li><a href="">More navigation</a></li>
+						</ul>
+						<ul class="nav nav-sidebar">
+							<li><br /></li>
+							<li><br /></li>
+							<li><br /></li>
+							<li><br /></li>
+							<li><br /></li>
+						</ul>
+						<ul class="nav nav-sidebar">
+							<li><br /></li>
+							<li><br /></li>
+							<li><a href="">Выход</a></li>
+						</ul>
+					</div>
+					<div
+						class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+						<h1 class="page-header">Статистика</h1>
+
+						<div class="row placeholders">
+							<div class="col-xs-6 col-sm-3 placeholder">
+								<img
+									src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+									width="200" height="200" class="img-responsive"
+									alt="Generic placeholder thumbnail" />
+								<h4>Label</h4>
+								<span class="text-muted">Something else</span>
+							</div>
+							<div class="col-xs-6 col-sm-3 placeholder">
+								<img
+									src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+									width="200" height="200" class="img-responsive"
+									alt="Generic placeholder thumbnail" />
+								<h4>Label</h4>
+								<span class="text-muted">Something else</span>
+							</div>
+							<div class="col-xs-6 col-sm-3 placeholder">
+								<img
+									src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+									width="200" height="200" class="img-responsive"
+									alt="Generic placeholder thumbnail" />
+								<h4>Label</h4>
+								<span class="text-muted">Something else</span>
+							</div>
+							<div class="col-xs-6 col-sm-3 placeholder">
+								<img
+									src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+									width="200" height="200" class="img-responsive"
+									alt="Generic placeholder thumbnail" />
+								<h4>Label</h4>
+								<span class="text-muted">Something else</span>
+							</div>
+						</div>
+
+						<h2 class="sub-header">Сегодня</h2>
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Header1</th>
+										<th>Header2</th>
+										<th>Header3</th>
+										<th>Header4</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1,001</td>
+										<td>Lorem</td>
+										<td>ipsum</td>
+										<td>dolor</td>
+										<td>sit</td>
+									</tr>
+									<tr>
+										<td>1,002</td>
+										<td>amet</td>
+										<td>consectetur</td>
+										<td>adipiscing</td>
+										<td>elit</td>
+									</tr>
+									<tr>
+										<td>1,003</td>
+										<td>Integer</td>
+										<td>nec</td>
+										<td>odio</td>
+										<td>Praesent</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<h:outputScript library="js" name="bootstrap.min.js" />
+</h:body>
+</html>

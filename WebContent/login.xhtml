@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+  <ui:composition template="templates/template.xhtml">
+	<ui:define name="content">
+	<h:outputStylesheet library="css" name="signin.css"/>
+		<div class="container">
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Вход в систему</h2>
+                <label for="inputEmail" class="sr-only">Email </label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="reqiured" autofocus="autofocus"/>
+                <label for="inputPassword" class="sr-only">Пароль</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" required="reqiured"/>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="remember-me"/> Запомнить меня
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+            </form> 
+        </div>
+	</ui:define>
+	</ui:composition>
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<h:outputScript library="js" name="bootstrap.min.js" />
+</h:body>
+</html>
