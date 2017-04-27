@@ -7,7 +7,6 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Menu</title>
 
 	<!-- Bootstrap -->
 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
@@ -51,43 +50,43 @@
 					</div>
 					<div
 						class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-						<h1 class="page-header">Новый сотрудник</h1>
+						<h1 class="page-header">Новый чек</h1>
 						<h:form>
-								<h:outputLabel value="Должность: " />
+								<h:outputLabel value="Официант: " />
 								<div class="input-group">
-								  <span class="input-group-addon" id="basic-addon1">!</span>
-								  <h:inputText styleClass="form-control" pt:placeholder="Должность" value="#{employee_controller.employee.position}">
+								  <span class="input-group-addon" id="basic-addon1">№</span>
+								  <h:inputText styleClass="form-control" pt:placeholder="Номер" value="#{check_controller.check.employee}">
 								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
 								  </h:inputText>
 								</div>
 								
-								<h:outputLabel value="Имя: " />
+								<h:outputLabel value="Клиент: " />
 								<div class="input-group">
 								  <span class="input-group-addon" id="basic-addon1">@</span>
-								  <h:inputText styleClass="form-control" pt:placeholder="Имя пользователя" value="#{employee_controller.employee.name}">
+								  <h:inputText styleClass="form-control" pt:placeholder="Имя пользователя" required="false" value="#{check_controller.check.client}">
 								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
 								  </h:inputText>
 								</div>
 								
 								
-								<h:outputLabel value="Логин: " />
+								<h:outputLabel value="Скидка: " />
 								<div class="input-group">
-								  <span class="input-group-addon" id="basic-addon1">#</span>
-								  <h:inputText styleClass="form-control" pt:placeholder="Логин" value="#{employee_controller.employee.login}">
+								  <span class="input-group-addon" id="basic-addon1">%</span>
+								  <h:inputText styleClass="form-control" pt:placeholder="Логин" value="#{check_controller.check.discount}">
 								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
 								  </h:inputText>
 								</div>
 								
-								<h:outputLabel value="Пароль: " />
+								<h:outputLabel value="Заказ: " />
 								<div class="input-group">
 								  <span class="input-group-addon" id="basic-addon1">*</span>
-								  <h:inputSecret styleClass="form-control" pt:placeholder="password" value="#{employee_controller.employee.password}">
+								  <h:inputText styleClass="form-control" pt:placeholder="password" value="#{check_controller.check.menuItems}">
 								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
-								  </h:inputSecret>
+								  </h:inputText>
 								</div>
 								<br/>
-							<h:commandButton styleClass="btn btn-primary" value="Добавить нового сотрудника"
-								action="#{employee_controller.addNewEmployee}" />
+							<h:commandButton styleClass="btn btn-primary" value="Добавить"
+								action="#{check_controller.addNewCheck}" />
 						</h:form>
 
 					</div>
