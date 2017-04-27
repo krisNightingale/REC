@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Menu</title>
 
 	<!-- Bootstrap -->
 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="bootstrap.css" />
 
 	<!-- Custom styles for this template -->
 	<h:outputStylesheet library="css" name="dashboard.css" />
@@ -50,45 +52,80 @@
 					</div>
 					<div
 						class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-						<h1 class="page-header">Новый чек</h1>
-						<h:form>
-								<h:outputLabel value="Официант: " />
-								<div class="input-group">
-								  <span class="input-group-addon" id="basic-addon1">№</span>
-								  <h:inputText styleClass="form-control" pt:placeholder="Номер" value="#{check_controller.check.employee}">
-								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
-								  </h:inputText>
-								</div>
-								
-								<h:outputLabel value="Клиент: " />
-								<div class="input-group">
-								  <span class="input-group-addon" id="basic-addon1">@</span>
-								  <h:inputText styleClass="form-control" pt:placeholder="Имя пользователя" required="false" value="#{check_controller.check.client}">
-								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
-								  </h:inputText>
-								</div>
-								
-								
-								<h:outputLabel value="Скидка: " />
-								<div class="input-group">
-								  <span class="input-group-addon" id="basic-addon1">%</span>
-								  <h:inputText styleClass="form-control" pt:placeholder="Логин" value="#{check_controller.check.discount}">
-								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
-								  </h:inputText>
-								</div>
-								
-								<h:outputLabel value="Заказ: " />
-								<div class="input-group">
-								  <span class="input-group-addon" id="basic-addon1">*</span>
-								  <h:inputText styleClass="form-control" pt:placeholder="password" value="#{check_controller.check.menuItems}">
-								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
-								  </h:inputText>
-								</div>
-								<br/>
-							<h:commandButton styleClass="btn btn-primary" value="Добавить"
-								action="#{check_controller.addNewCheck}" />
-						</h:form>
+						<h1 class="page-header">Добавить чек</h1>
+						<h:form styleClass="form-horizontal">
 
+							<div class="form-group">
+								<h:outputLabel value="Официант" for="inputWaiter"
+									styleClass="col-sm-1 control-label" />
+								<div class="col-sm-5">
+									<div class="input-group">
+										<span class="input-group-addon" id="addonWaiter"><span class="glyphicon glyphicon-cutlery" aria-hidden="true" /></span>
+										<h:selectOneMenu styleClass="form-control" id="inputWaiter" value="#{check_controller.check.employeeId}" pt:aria-describedby="addonWaiter">
+											<f:selectItem itemValue="1" itemLabel="1" />
+											<f:selectItem itemValue="2" itemLabel="2" />
+											<f:selectItem itemValue="3" itemLabel="3" />
+											<f:selectItem itemValue="4" itemLabel="4" />
+											<f:selectItem itemValue="5" itemLabel="5" />
+											<f:selectItem itemValue="6" itemLabel="6" />
+										</h:selectOneMenu>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<h:outputLabel value="Клиент" for="inputClient"
+									styleClass="col-sm-1 control-label" />
+								<div class="col-sm-5">
+									<div class="input-group">
+										<span class="input-group-addon" id="addonClient"><span
+											class="glyphicon glyphicon-star" aria-hidden="true" /></span> 									
+										<h:selectOneMenu styleClass="form-control" id="inputClient" value="#{check_controller.check.clientId}" pt:aria-describedby="addonClient">
+											<f:selectItem itemValue="1" itemLabel="1" />
+											<f:selectItem itemValue="1" itemLabel="1" />
+											<f:selectItem itemValue="2" itemLabel="2" />
+										</h:selectOneMenu>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<h:outputLabel value="Скидка, %" for="inputDiscount"
+									styleClass="col-sm-1 control-label" />
+								<div class="col-sm-2">
+									<div class="input-group">
+										<span class="input-group-addon" id="addonDiscount"><span
+											class="glyphicon glyphicon-scale" aria-hidden="true"/></span>
+										<h:inputText styleClass="form-control" id="inputDiscount" pt:aria-describedby="addonDiscount" pt:placeholder="Скидка"
+											value="#{check_controller.check.discount}">
+										</h:inputText>
+									</div>
+								</div>
+							</div>
+							
+							
+							
+							<div class="form-group">
+								<h:outputLabel value="Цена, грн" for="inputPrice"
+									styleClass="col-sm-1 control-label" />
+								<div class="col-sm-2">
+									<div class="input-group">
+										<span class="input-group-addon" id="addonPrice"><span
+											class="glyphicon glyphicon-usd" aria-hidden="true"/></span> 
+											<h:inputText styleClass="form-control" id="inputPrice" pt:aria-describedby="addonPrice"
+											pt:placeholder="Цена" value="#{check_controller.check.price}">
+										</h:inputText>
+									</div>
+								</div>
+							</div>
+							<br />
+							<div class="form-group">
+								<div class="col-sm-1">
+									<h:commandButton styleClass="btn btn-primary" value="Добавить новый чек"
+								action="#{check_controller.addNewCheck}" />
+								</div>
+							</div>
+						</h:form>
 					</div>
 				</div>
 			</div>

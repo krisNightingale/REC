@@ -14,11 +14,11 @@ public class CheckController {
 	@EJB
 	private CheckEJB checkEJB;
 	private Check check = new Check();
-	private List<Check> checkList = new ArrayList<>();
+	private List<Check> list = new ArrayList<>();
 
 	public List<Check> getCheckList() {
-		checkList = checkEJB.findChecks();
-		return checkList;
+		list = checkEJB.findChecks();
+		return list;
 	}
 
 	public String viewCheck() {
@@ -27,7 +27,7 @@ public class CheckController {
 
 	public String addNewCheck() {
 		check = checkEJB.addNewCheck(check);
-		checkList = checkEJB.findChecks();
+		list = checkEJB.findChecks();
 		return "check_list.xhtml";
 	}
 
@@ -47,7 +47,12 @@ public class CheckController {
 		this.check = check;
 	}
 
-	public void setCheckList(List<Check> checkList) {
-		this.checkList = checkList;
+	public List<Check> getList() {
+		return getCheckList();
 	}
+
+	public void setList(List<Check> list) {
+		this.list = list;
+	}
+
 }

@@ -17,7 +17,9 @@ public class Menu implements Serializable {
 	@Column(name="id_menu")
 	private int idMenu;
 
-	private int category;
+	@ManyToOne
+	@JoinColumn(name = "id_category")
+	private Category category;
 
 	@Lob
 	private String consist;
@@ -39,11 +41,11 @@ public class Menu implements Serializable {
 		this.idMenu = idMenu;
 	}
 
-	public int getCategory() {
-		return this.category;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setCategory(int category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 

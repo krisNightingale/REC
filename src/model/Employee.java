@@ -1,8 +1,8 @@
 package model;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+//import java.text.DateFormat;
+//import java.text.SimpleDateFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -33,7 +33,9 @@ public class Employee implements Serializable {
 
 	private String password;
 
-	private int position;
+	@ManyToOne
+	@JoinColumn(name = "id_position")
+	private Position position;
 
 	public Employee() {
 	}
@@ -47,7 +49,7 @@ public class Employee implements Serializable {
 	}
 
 	public Date getLastVisit() {
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 //		System.out.println(dateFormat.format(this.lastVisit));
 		return this.lastVisit;
 	}
@@ -81,12 +83,13 @@ public class Employee implements Serializable {
 		this.password = password;
 	}
 
-	public int getPosition() {
-		return this.position;
+	public Position getPosition() {
+		return position;
 	}
 
-	public void setPosition(int position) {
+	public void setPosition(Position position) {
 		this.position = position;
 	}
 
+	
 }

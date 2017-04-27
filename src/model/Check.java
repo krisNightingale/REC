@@ -2,8 +2,8 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Set;
+import java.sql.Timestamp;
+
 
 /**
  * The persistent class for the checks database table.
@@ -16,41 +16,21 @@ public class Check implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_check")
 	private int idCheck;
 
-	private byte discount;
+	@Column(name="client_id")
+	private int clientId;
+
+	private int discount;
+
+	@Column(name="employee_id")
+	private int employeeId;
 
 	private float price;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(insertable = false, updatable = false)
-	private Date time;
-
-	//bi-directional many-to-one association to Client
-	@ManyToOne
-	@JoinColumn(name="client_id")
-	private Client client;
-
-	//bi-directional many-to-one association to Employee
-	@ManyToOne
-	@JoinColumn(name="employee_id")
-	private Employee employee;
-
-	@ManyToMany
-	@JoinTable(name = "menu_checks",
-	joinColumns = @JoinColumn(name = "id_menu", referencedColumnName = "id_check"),
-	inverseJoinColumns = @JoinColumn(name = "id_check", referencedColumnName = "id_menu"))
-	private Set<Menu> menuItems;
-
-	public Set<Menu> getMenuItems() {
-		return menuItems;
-	}
-
-	public void setMenuItems(Set<Menu> menuItems) {
-		this.menuItems = menuItems;
-	}
+	@Column(name="time", insertable = false, updatable = false)
+	private Timestamp time;
 
 	public Check() {
 	}
@@ -63,12 +43,28 @@ public class Check implements Serializable {
 		this.idCheck = idCheck;
 	}
 
-	public byte getDiscount() {
+	public int getClientId() {
+		return this.clientId;
+	}
+
+	public void setClientId(int clientId) {
+		this.clientId = clientId;
+	}
+
+	public int getDiscount() {
 		return this.discount;
 	}
 
-	public void setDiscount(byte discount) {
+	public void setDiscount(int discount) {
 		this.discount = discount;
+	}
+
+	public int getEmployeeId() {
+		return this.employeeId;
+	}
+
+	public void setEmployeeId(int employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	public float getPrice() {
@@ -79,27 +75,12 @@ public class Check implements Serializable {
 		this.price = price;
 	}
 
-	public Date getTime() {
+	public Timestamp getTime() {
 		return this.time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 
-	public Client getClient() {
-		return this.client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	public Employee getEmployee() {
-		return this.employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
 }

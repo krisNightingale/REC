@@ -53,18 +53,18 @@
 						<h1 class="page-header">Чеки</h1>
 						<div class="table-responsive">
 							<h:dataTable styleClass="table table-striped"
-								value="#{check_controller.checkList}" var="check">
+								value="#{check_controller.list}" var="check">
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Заказ" />
+										<h:outputText value="Клиент" />
 									</f:facet>
-									<h:outputText value="#{check.menuItems}" />
+									<h:outputText value="#{check.clientId}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
 										<h:outputText value="Официант" />
 									</f:facet>
-									<h:outputText value="#{check.employee}" />
+									<h:outputText value="#{check.employeeId}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">

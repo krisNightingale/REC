@@ -6,5 +6,8 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 		<class>model.MenuItem</class>
 		<class>model.Menu</class>
 		<class>model.Employee</class>
+		<class>model.Category</class>
+		<class>model.Position</class>
+		<class>model.Check</class>
 	</persistence-unit>
 </persistence>
