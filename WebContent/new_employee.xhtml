@@ -55,10 +55,12 @@
 						<h:form>
 								<h:outputLabel value="Должность: " />
 								<div class="input-group">
-								  <span class="input-group-addon" id="basic-addon1">!</span>
-								  <h:inputText styleClass="form-control" pt:placeholder="Должность" value="#{employee_controller.employee.position}">
-								  	<f:attribute name="aria-describedby" value="basic-addon1"/>
-								  </h:inputText>
+								  <span class="input-group-addon" id="addonCategory">!</span>
+								  <h:selectOneMenu converter="positionConverter" styleClass="form-control" id="inputCategory" value="#{employee_controller.employee.positionBean}" pt:aria-describedby="addonCategory">
+										<f:selectItems value="#{position_controller.positionList}" var="position" 
+										itemValue="#{position}" itemLabel="#{position.name}">
+										</f:selectItems>
+								 </h:selectOneMenu>
 								</div>
 								
 								<h:outputLabel value="Имя: " />

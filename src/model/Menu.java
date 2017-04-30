@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Set;
 
 
 /**
@@ -17,10 +18,6 @@ public class Menu implements Serializable {
 	@Column(name="id_menu")
 	private int idMenu;
 
-	@ManyToOne
-	@JoinColumn(name = "id_category")
-	private Category category;
-
 	@Lob
 	private String consist;
 
@@ -29,6 +26,15 @@ public class Menu implements Serializable {
 	private float price;
 
 	private float weight;
+
+	//bi-directional many-to-one association to Category
+	@ManyToOne
+	@JoinColumn(name="category")
+	private Category categoryBean;
+
+	//bi-directional many-to-many association to Check
+	@ManyToMany(mappedBy="menus")
+	private Set<Check> checks;
 
 	public Menu() {
 	}
@@ -39,14 +45,6 @@ public class Menu implements Serializable {
 
 	public void setIdMenu(int idMenu) {
 		this.idMenu = idMenu;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
 	}
 
 	public String getConsist() {
@@ -79,6 +77,22 @@ public class Menu implements Serializable {
 
 	public void setWeight(float weight) {
 		this.weight = weight;
+	}
+
+	public Category getCategoryBean() {
+		return this.categoryBean;
+	}
+
+	public void setCategoryBean(Category categoryBean) {
+		this.categoryBean = categoryBean;
+	}
+
+	public Set<Check> getChecks() {
+		return this.checks;
+	}
+
+	public void setChecks(Set<Check> checks) {
+		this.checks = checks;
 	}
 
 }

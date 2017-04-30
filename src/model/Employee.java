@@ -1,12 +1,10 @@
 package model;
 
 import java.io.Serializable;
-//import java.text.DateFormat;
-//import java.text.SimpleDateFormat;
-
 import javax.persistence.*;
 import java.util.Date;
-//import java.lang.System;
+import java.util.Objects;
+import java.util.Set;
 
 
 /**
@@ -33,9 +31,14 @@ public class Employee implements Serializable {
 
 	private String password;
 
+	//bi-directional many-to-one association to Check
+	@OneToMany(mappedBy="employee")
+	private Set<Check> checks;
+
+	//bi-directional many-to-one association to Position
 	@ManyToOne
-	@JoinColumn(name = "id_position")
-	private Position position;
+	@JoinColumn(name="position")
+	private Position positionBean;
 
 	public Employee() {
 	}
@@ -49,14 +52,11 @@ public class Employee implements Serializable {
 	}
 
 	public Date getLastVisit() {
-//		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//		System.out.println(dateFormat.format(this.lastVisit));
 		return this.lastVisit;
 	}
 
 	public void setLastVisit(Date lastVisit) {
 		this.lastVisit = lastVisit;
-//		this.lastVisit = new Date(System.currentTimeMillis());
 	}
 
 	public String getLogin() {
@@ -83,13 +83,49 @@ public class Employee implements Serializable {
 		this.password = password;
 	}
 
-	public Position getPosition() {
-		return position;
+	public Set<Check> getChecks() {
+		return this.checks;
 	}
 
-	public void setPosition(Position position) {
-		this.position = position;
+	public void setChecks(Set<Check> checks) {
+		this.checks = checks;
 	}
 
+	public Check addCheck(Check check) {
+		getChecks().add(check);
+		check.setEmployee(this);
+
+		return check;
+	}
+
+	public Check removeCheck(Check check) {
+		getChecks().remove(check);
+		check.setEmployee(null);
+
+		return check;
+	}
+
+	public Position getPositionBean() {
+		return this.positionBean;
+	}
+
+	public void setPositionBean(Position positionBean) {
+		this.positionBean = positionBean;
+	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		// Basic checks.
+        if (obj == this) return true;
+        if (!(obj instanceof Employee)) return false;
+
+        // Property checks.
+        Employee other = (Employee) obj;
+        return Objects.equals(idEmployee, other.idEmployee)
+            && Objects.equals(name, other.name)
+            && Objects.equals(lastVisit, other.lastVisit)
+            && Objects.equals(password, other.password)
+            && Objects.equals(login, other.login);
+	}
+
 }
