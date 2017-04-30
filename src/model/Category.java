@@ -3,6 +3,9 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import java.util.Objects;
+import java.util.Set;
+
 
 /**
  * The persistent class for the categories database table.
@@ -19,6 +22,10 @@ public class Category implements Serializable {
 	private int idCategory;
 
 	private String name;
+
+	//bi-directional many-to-one association to Menu
+	@OneToMany(mappedBy="categoryBean")
+	private Set<Menu> menus;
 
 	public Category() {
 	}
@@ -39,4 +46,37 @@ public class Category implements Serializable {
 		this.name = name;
 	}
 
+	public Set<Menu> getMenus() {
+		return this.menus;
+	}
+
+	public void setMenus(Set<Menu> menus) {
+		this.menus = menus;
+	}
+
+	public Menu addMenus(Menu menus) {
+		getMenus().add(menus);
+		menus.setCategoryBean(this);
+
+		return menus;
+	}
+
+	public Menu removeMenus(Menu menus) {
+		getMenus().remove(menus);
+		menus.setCategoryBean(null);
+
+		return menus;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		// Basic checks.
+        if (obj == this) return true;
+        if (!(obj instanceof Category)) return false;
+
+        // Property checks.
+        Category other = (Category) obj;
+        return Objects.equals(idCategory, other.idCategory)
+            && Objects.equals(name, other.name);
+	}
 }

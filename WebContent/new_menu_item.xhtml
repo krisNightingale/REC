@@ -76,14 +76,11 @@
 									<div class="input-group">
 										<span class="input-group-addon" id="addonCategory"><span
 											class="glyphicon glyphicon-star" aria-hidden="true" /></span> 									
-										<h:selectOneMenu styleClass="form-control" id="inputCategory" value="#{controller.menuItem.category}" pt:aria-describedby="addonCategory">
-											<f:selectItem itemValue="1" itemLabel="Напитки" />
-											<f:selectItem itemValue="2" itemLabel="Первые блюда" />
-											<f:selectItem itemValue="3" itemLabel="Вторые блюда" />
-											<f:selectItem itemValue="4" itemLabel="Десерты" />
-											<f:selectItem itemValue="5" itemLabel="Салаты" />
-											<f:selectItem itemValue="6" itemLabel="Пицца" />
-										</h:selectOneMenu>
+										<h:selectOneMenu converter="categoryConverter" styleClass="form-control" id="inputCategory" value="#{controller.menuItem.categoryBean}" pt:aria-describedby="addonCategory">
+										<f:selectItems value="#{category_controller.categoryList}" var="category" 
+										itemValue="#{category}" itemLabel="#{category.name}">
+										</f:selectItems>
+								 </h:selectOneMenu>
 									</div>
 								</div>
 							</div>

@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
 <body>
 	<ui:composition>
 		<nav class="navbar navbar-default navbar-fixed-top"
@@ -24,7 +26,7 @@
 					<li class="active" style="padding-left: 95px"><h:link value="Главная" outcome="main" /></li>
 					<li><h:link value="Меню" outcome="menu_list" /></li>
 					<li><h:link value="Сотрудники" outcome="employee_list" /></li>
-					<li><h:link value="Чеки" outcome="employee_list" /></li>
+					<li><h:link value="Чеки" outcome="check_list" /></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Настройки <span class="caret"></span></a>

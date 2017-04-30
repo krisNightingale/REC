@@ -54,4 +54,16 @@ public class EmployeeController {
 	public void setList(List<Employee> list) {
 		this.list = list;
 	}
+	
+	public Employee getOneEmployee(Integer id) {
+        if (id == null){
+            throw new IllegalArgumentException("no id provided");
+        }
+        for (Employee oneEmployee : getEmployeeList()){
+            if (id.equals(oneEmployee.getIdEmployee())){
+                return oneEmployee;
+            }
+        }
+        return null;
+    }
 }
