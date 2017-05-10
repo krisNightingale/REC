@@ -3,6 +3,8 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -17,6 +19,7 @@ public class Check implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_check")
 	private int idCheck;
 
@@ -24,7 +27,7 @@ public class Check implements Serializable {
 
 	private float price;
 
-	@Column(name="time", insertable = false, updatable = false)
+	@Column(name="time")
 	private Timestamp time;
 
 	//bi-directional many-to-one association to Client
@@ -38,14 +41,14 @@ public class Check implements Serializable {
 	private Employee employee;
 
 	//bi-directional many-to-many association to Menu
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinTable(name="menu_checks",
 	joinColumns = @JoinColumn(name="id_check", referencedColumnName="id_check"),
 	inverseJoinColumns = @JoinColumn(name = "id_menu", referencedColumnName = "id_menu"))
-//	@JoinColumn(name="id_check")
 	private Set<Menu> menus;
 
 	public Check() {
+		menus = new HashSet<Menu>();
 	}
 
 	public int getIdCheck() {
@@ -104,4 +107,28 @@ public class Check implements Serializable {
 		this.menus = menus;
 	}
 
+	public void addMenuItem(Menu item){
+		this.getMenus().add(item);
+		System.out.println("--- Added: "+ item.getName());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		// Basic checks.
+        if (obj == this) return true;
+        if (!(obj instanceof Check)) return false;
+
+        // Property checks.
+        Check other = (Check) obj;
+        return Objects.equals(idCheck, other.idCheck)
+            && Objects.equals(price, other.price)
+            && Objects.equals(time, other.time)
+            && Objects.equals(client, other.client)
+            && Objects.equals(employee, other.employee);
+	}
+
+	@Override
+	public int hashCode() {
+		return Integer.hashCode(idCheck);
+	}
 }

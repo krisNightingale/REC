@@ -31,7 +31,7 @@ public class Client implements Serializable {
 
 	private String password;
 
-	@Column(name="registration_time")
+	@Column(name="registration_time", insertable = false, updatable = false)
 	private Timestamp registrationTime;
 
 	private String telephone;
