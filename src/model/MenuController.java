@@ -54,4 +54,16 @@ public class MenuController {
 	public List<Menu> getList() {
 		return getMenuList();
 	}
+	
+	public Menu getOneMenuItem(Integer id) {
+        if (id == null){
+            throw new IllegalArgumentException("no id provided");
+        }
+        for (Menu item : getMenuList()){
+            if (id.equals(item.getIdMenu())){
+                return item;
+            }
+        }
+        return null;
+    }
 }

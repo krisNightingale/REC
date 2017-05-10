@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -33,10 +36,11 @@ public class Menu implements Serializable {
 	private Category categoryBean;
 
 	//bi-directional many-to-many association to Check
-	@ManyToMany(mappedBy="menus")
+	@ManyToMany(mappedBy="menus", fetch = FetchType.EAGER)
 	private Set<Check> checks;
 
 	public Menu() {
+		checks = new HashSet<Check>();
 	}
 
 	public int getIdMenu() {
@@ -95,4 +99,23 @@ public class Menu implements Serializable {
 		this.checks = checks;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		// Basic checks.
+        if (obj == this) return true;
+        if (!(obj instanceof Menu)) return false;
+
+        // Property checks.
+        Menu other = (Menu) obj;
+        return Objects.equals(idMenu, other.idMenu)
+            && Objects.equals(name, other.name)
+            && Objects.equals(price, other.price)
+            && Objects.equals(weight, other.weight);
+	}
+
+	@Override
+	public int hashCode() {
+		return idMenu;
+	}
+	
 }

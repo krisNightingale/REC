@@ -10,5 +10,9 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org
 		<class>model.Employee</class>
 		<class>model.Menu</class>
 		<class>model.Position</class>
+		<properties>
+			<property name="eclipselink.logging.level.sql" value="FINE"/>
+			<property name="eclipselink.logging.parameters" value="true"/>
+		</properties>
 	</persistence-unit>
 </persistence>

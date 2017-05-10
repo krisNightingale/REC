@@ -6,14 +6,6 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Menu</title>
-
-	<!-- Bootstrap -->
-	<h:outputStylesheet library="css" name="bootstrap.min.css" />
-
-	<!-- Custom styles for this template -->
-	<h:outputStylesheet library="css" name="dashboard.css" />
-	<h:outputStylesheet library="css" name="sticky-footer-navbar.css" />
 </h:head>
 <h:body>
 	<ui:composition template="templates/template.xhtml">
@@ -50,55 +42,60 @@
 					</div>
 					<div
 						class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-						<h1 class="page-header">Чеки</h1>
+						<h1 class="page-header">Клиенты</h1>
 						<div class="table-responsive">
-							<h:dataTable styleClass="table table-striped"
-								value="#{check_controller.list}" var="check">
+							<h:dataTable styleClass="table table-striped" value="#{client_controller.list}" var="client">
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Клиент" />
+										<h:outputText value="ID" />
 									</f:facet>
-									<h:outputText value="#{check.client.name}" />
+									<h:outputText value="#{client.idClient}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Официант" />
+										<h:outputText value="Имя " />
 									</f:facet>
-									<h:outputText value="#{check.employee.name}" />
+									<h:outputText value="#{client.name}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Цена" />
+										<h:outputText value="Логин " />
 									</f:facet>
-									<h:outputText value="#{check.price}" />
+									<h:outputText value="#{client.login}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Время" />
+										<h:outputText value="Телефон" />
 									</f:facet>
-									<h:outputText value="#{check.time}">
-										<f:convertDateTime pattern="yyyy/MM/dd HH:mm:ss"/>
+									<h:outputText value="#{client.telephone}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">
+										<h:outputText value="День рождения" />
+									</f:facet>
+									<h:outputText value="#{client.birthday}" >
+										<f:convertDateTime pattern="yyyy/MM/dd"/>
 									</h:outputText>
 								</h:column>
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Скидка" />
+										<h:outputText value="Бонусы" />
 									</f:facet>
-									<h:outputText value="#{check.discount}" />
+									<h:outputText value="#{client.bonuses}" />
 								</h:column>
 								<h:column>
 									<f:facet name="header">
-										<h:outputText value="Заказ" />
+										<h:outputText value="Дата регистрации" />
 									</f:facet>
-									<ui:repeat var="item_menu" value="#{check.menus}">
-										<li><h:outputText value="#{item_menu.name}"></h:outputText></li>
-									</ui:repeat>
+									<h:outputText value="#{client.registrationTime}">
+										<f:convertDateTime pattern="yyyy/MM/dd HH:mm:ss"/>
+									</h:outputText>
 								</h:column>
 							</h:dataTable>
 						</div>
 						<h:form>
-							<h:link outcome="new_check.xhtml"
-								value="Добавить новый чек" />
+							<h:link outcome="new_client.xhtml"
+								value="Добавить нового клиента" />
 						</h:form>
 					</div>
 				</div>
